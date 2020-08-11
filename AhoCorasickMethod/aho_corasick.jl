@@ -76,10 +76,24 @@ module AhoCorasick
       end
       return output
     end
+  end
 
-    function goto_is_fail(g::Dict{Tuple{Int64, Char}, Int64}, key::Tuple{Int64, Char}) :: bool
-      return !haskey(g, key)
+  function pattern_matching_machine(hoge::Trie, a::String)
+    n = length(a)
+    state = 0
+    for i in 1:n
+      while goto_is_fail(hoge.goto, (state, a[i]))
+        state = hoge.failure[state]
+      end
+      state = hoge.goto[(state, a[i])]
+      if !isempty(hoge.output[state])
+        println("$(i) $(hoge.output[state])")
+      end
     end
+  end
+
+  function goto_is_fail(g::Dict{Tuple{Int64, Char}, Int64}, key::Tuple{Int64, Char}) :: Bool
+    return !haskey(g, key)
   end
 
   function print_elem(self::Trie)
@@ -93,11 +107,12 @@ module AhoCorasick
     println(self.output)
     println()
   end
-
 end
 
 test1 = AhoCorasick.Trie(["ab", "bc", "bab", "d", "abcde"])
-AhoCorasick.print_elem(test1)
+# AhoCorasick.print_elem(test1)
+AhoCorasick.pattern_matching_machine(test1, "babcdex")
 
 test2 = AhoCorasick.Trie(["he", "she", "his", "hers"])
-AhoCorasick.print_elem(test2)
+# AhoCorasick.print_elem(test2)
+AhoCorasick.pattern_matching_machine(test2, "ushers")
