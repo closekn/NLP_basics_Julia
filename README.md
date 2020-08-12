@@ -9,6 +9,8 @@
 
 ## Directory
 
+- AhoCorasickMethod
+  - Implementation of Aho-Corasick based on the original paper and its implementation.
 - ExtractingKeywords
   - Count the frequency of non-stop words from the text and pick out important words.
 - VectorSpaceModel
