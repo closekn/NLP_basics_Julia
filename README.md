@@ -14,19 +14,21 @@
 - VectorSpaceModel
   - A vector space model is constructed for multiple documents and keyword search is performed.
 
-## Create a working container
+## Creating the Environment
 
+- container image in Docker hub
+  - [closekn/nlp_basics_julia](https://hub.docker.com/repository/docker/closekn/nlp_basics_julia)
+
+Create a container with the environment of this repository by using Docker.  
 You can work in the directory '/home/workspace' in the container using the julia language.  
 
 - Local shell
 
 ```sh
 # Create a container image
-$ docker build -t [image-name] .
+$ docker pull closekn/nlp_basics_julia
 # Create and Enter the container
-$ docker run -it --name [container-name] [image-name] /bin/bash
-# Enter the container
-$ docker exec -it [container-name] /bin/bash
+$ docker run -it --rm closekn/nlp_basics_julia /bin/bash
 ```
 
 - Container Shell
