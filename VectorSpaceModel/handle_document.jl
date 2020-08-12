@@ -78,7 +78,7 @@ module handle_document
    * @return [1] (Set{String} stop_words) ストップワード集合
   =#
   function make_stop_word_set()
-    file = open("./../data_file/stop_words_list.txt")
+    file = open("./sample_data/stop_words_list.txt")
     stop_words = Set{String}()
 
     for word in readlines(file)

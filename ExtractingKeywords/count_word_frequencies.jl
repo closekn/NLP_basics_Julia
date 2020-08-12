@@ -1,4 +1,4 @@
-file = open("./../data_file/doc_separate.txt")   # 分割済単語ファイル
+file = open("./sample_data/doc_separate.txt")    # 分割済単語ファイル
 frequency = Dict{String, Int64}()                # 辞書型(key:単語 value:頻度)
 
 for word in readlines(file)

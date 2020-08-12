@@ -1,4 +1,4 @@
-file = open("./../data_file/stop_words_list.txt") # ストップワードファイル
+file = open("./sample_data/stop_words_list.txt")  # ストップワードファイル
 stop_words = Set{String}()                        # set型(ストップワード集合)
 
 for word in readlines(file)
@@ -7,7 +7,7 @@ end
 
 close(file)
 
-file = open("./../data_file/doc_frequency.txt")   # 単語頻度ファイル
+file = open("./sample_data/doc_frequency.txt")    # 単語頻度ファイル
 important_words = Pair{String, Int64}[]           # pair型(重要語=>頻度)
 
 for line in readlines(file)

@@ -4,7 +4,7 @@
 
 - Need  
 Prepare an English document set file and a stop-word list file.  
-("../data_file/doc_set.txt", "../data_file/stop_words_list.txt")
+("./sample_data/doc_set.txt", "./sample_data/stop_words_list.txt")
 - Run  
 `$ julia search_in_vector_space_model.jl`
 - Do  

@@ -1,7 +1,2 @@
 # Mac
 .DS_Store
-
-# data
-/data_file/
-*.txt
-*.html

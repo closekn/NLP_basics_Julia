@@ -1,4 +1,4 @@
-file = open("./../data_file/doc.txt")           # 文章ファイル
+file = open("./sample_data/doc.txt")            # 文章ファイル
 
 for line in readlines(file)[2:end]
   words = split(chomp(line), r"[\s-]")          # 空白かハイフンで分割

@@ -1,4 +1,4 @@
-include("./aho_corasick.jl")
+include("./../aho_corasick.jl")
 using .AhoCorasick
 
 function print_elem(self::AhoCorasick.Trie)

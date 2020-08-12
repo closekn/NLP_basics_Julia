@@ -4,7 +4,7 @@ using .handle_document
 using .evaluation
 
 # 文書情報の生成
-file_name = "./../data_file/doc_set.txt"
+file_name = "./sample_data/doc_set.txt"
 titles, first_sentences, frequencys, words_num = handle_document.make_chapter_info(file_name)
 chapter_num = size(titles)[1]
 
