@@ -78,41 +78,24 @@ module AhoCorasick
     end
   end
 
-  function pattern_matching_machine(hoge::Trie, a::String)
+  function pattern_matching_machine(trie::Trie, a::String)
+    a = replace(a, r"[A-Z]" => lowercase)
     n = length(a)
     state = 0
     for i in 1:n
-      while goto_is_fail(hoge.goto, (state, a[i]))
-        state = hoge.failure[state]
+      if !('a' <= a[i] <= 'z')
+        state = 0
+        continue
       end
-      state = hoge.goto[(state, a[i])]
-      if !isempty(hoge.output[state])
-        println("$(i) $(hoge.output[state])")
+      while goto_is_fail(trie.goto, (state, a[i]))
+        state = trie.failure[state]
+      end
+      state = trie.goto[(state, a[i])]
+      if !isempty(trie.output[state])
+        println("[find] (index):$(i) (keyword):$(trie.output[state])")
       end
     end
   end
 
-  function goto_is_fail(g::Dict{Tuple{Int64, Char}, Int64}, key::Tuple{Int64, Char}) :: Bool
-    return !haskey(g, key)
-  end
-
-  function print_elem(self::Trie)
-    println("== goto ==")
-    println(self.goto)
-    println()
-    println("== failure ==")
-    println(self.failure)
-    println()
-    println("== output ==")
-    println(self.output)
-    println()
-  end
+  goto_is_fail(g::Dict{Tuple{Int64, Char}, Int64}, key::Tuple{Int64, Char}) :: Bool = !haskey(g, key)
 end
-
-test1 = AhoCorasick.Trie(["ab", "bc", "bab", "d", "abcde"])
-# AhoCorasick.print_elem(test1)
-AhoCorasick.pattern_matching_machine(test1, "babcdex")
-
-test2 = AhoCorasick.Trie(["he", "she", "his", "hers"])
-# AhoCorasick.print_elem(test2)
-AhoCorasick.pattern_matching_machine(test2, "ushers")
