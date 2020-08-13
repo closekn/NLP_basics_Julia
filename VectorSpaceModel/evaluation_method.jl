@@ -29,7 +29,7 @@ module evaluation
       end
     end
 
-    result = ( df != 0 ) ? log(chapter_num/df)+1.0 : 1.0
+    result = ( df != 0 ) ? log(chapter_num/df)+1.0 : 0.0
     return result
   end
 
